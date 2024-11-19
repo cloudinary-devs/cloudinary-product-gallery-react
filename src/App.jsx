@@ -5,7 +5,16 @@ function App() {
   return (
     <>
       <h1>Cloudinary Product Gallery - React</h1>
-      <ProductGallery galleryConfig={{ aspectRatio: '4:3' }} />
+      <ProductGallery
+        galleryConfig={{
+          mediaAssets: [
+            { tag: 'electric_car_product_gallery_demo' }, // by default mediaType: "image"
+            { tag: 'electric_car_product_gallery_demo', mediaType: 'video' },
+            { tag: 'electric_car_360_product_gallery_demo', mediaType: 'spin' },
+          ],
+          aspectRatio: '4:3',
+        }}
+      />
       <p>
         See the{' '}
         <a
