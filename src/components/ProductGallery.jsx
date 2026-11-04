@@ -5,16 +5,18 @@ const ProductGallery = ({ galleryConfig }) => {
   const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || 'demo';
 
   useEffect(() => {
-    if (window && galleryRef.current) {
-      window.cloudinary
-        .galleryWidget({
-          container: galleryRef.current,
-          cloudName: cloudName,
-          ...galleryConfig,
-        })
-        .render();
-    }
-  }, [galleryConfig]);
+    if (!galleryRef.current) return;
+
+    const gallery = window.cloudinary.galleryWidget({
+      container: galleryRef.current,
+      cloudName: cloudName,
+      ...galleryConfig,
+    });
+    gallery.render();
+
+    // Remove the widget from memory when the config changes or the component unmounts
+    return () => gallery.destroy();
+  }, [galleryConfig, cloudName]);
 
   return (
     <div ref={galleryRef} style={{ width: '80%', margin: 'auto' }}>

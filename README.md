@@ -2,6 +2,8 @@
 
 This app shows a basic React component for the Cloudinary Product Gallery Widget.
 
+This sample loads the Product Gallery widget with the standalone script embed (`all.js`, pinned to a specific version in `index.html`) and wraps it in a React component. It destroys the widget when the config changes or the component unmounts. To use the `@cloudinary/product-gallery` npm package instead (for example, for server-side rendering), see [Choosing a distribution](https://cloudinary.com/documentation/product_gallery#choosing_a_distribution).
+
 To run locally:
 
 1. `npm i`
